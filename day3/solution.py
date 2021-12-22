@@ -41,13 +41,11 @@ def unbinary(string: str) -> int:
 def most_common(arr: Iterable[str]) -> str:
     c = Counter(arr)
     (value, _), *_ = c.most_common()
-    # print("Most common:", value)
     return value
 
 def least_common(arr: Iterable[str]) -> str:
     c = Counter(arr)
     *_, (value, _) = c.most_common()
-    # print("Least common:", value)
     return value
 
 def part2(arr: Iterable[str], most=True) -> str:
@@ -55,13 +53,10 @@ def part2(arr: Iterable[str], most=True) -> str:
 
     idx = 0
     while len(valid) > 1:
-        # print("Index:", idx)
-        # print("Valid:", valid)
         c = Counter(map(lambda x: x[idx], valid))
 
         counted = c.most_common()
 
-        # print(counted)
         [(most_value, most_count), (least_value, least_count)] = counted
 
         ints = list(map(int, [least_value, most_value]))
@@ -70,16 +65,11 @@ def part2(arr: Iterable[str], most=True) -> str:
         else:
             value = most_value if most else least_value
 
-        # print(f"{'Most' if most else 'Least'} common value is {value}")
-        # print("Old length:", len(valid))
         valid = [v for v in valid if v[idx] == value]
-        # print("New length:", len(valid))
 
         idx += 1
 
     [result] = valid
-
-    # print(f"{'Most' if most else 'Least'} common result is {result}")
 
     return result
 
